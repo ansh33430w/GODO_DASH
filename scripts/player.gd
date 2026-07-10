@@ -32,9 +32,9 @@ func _physics_process(delta: float) -> void:
 	jump()
 	move_and_slide()
 	
-	var nextstate = nextstate()
-	if nextstate != cur_state:
-		statechanger(nextstate)
+	var next_state = nextstate()
+	if next_state != cur_state:
+		statechanger(next_state)
 		
 	rotation_update(delta)
 	
@@ -55,9 +55,7 @@ func Gravity(delta) :
 		velocity.y += gravity*delta
 		velocity.y = min(velocity.y,maxfallspeed)
 		
-	else:
-		cur_jumps =0
-		velocity.y= 0 
+	
 		
 		
 		
@@ -93,14 +91,14 @@ func nextstate() -> state:
 			
 func statechanger(newstate:state) :
 	cur_state = newstate
-	
+	statemanager(newstate)
 	
 	
 	
 func statemanager(State:state):
 	var anim : String
 	
-	match state:
+	match State:
 		state.IDLE :
 			anim = "idle"
 			
