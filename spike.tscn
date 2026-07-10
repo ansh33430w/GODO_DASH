@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bvkwmdwiuvrls"]
+
+[ext_resource type="Script" uid="uid://hbje8cfqnoo2" path="res://scripts/spike.gd" id="1_8ryga"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pe76i"]
+load_path = "res://.godot/imported/GROUND_PLAT. (16x16).png-317dd3766b14dd161824c2a3ad18cee4.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ryga"]
+atlas = SubResource("CompressedTexture2D_pe76i")
+region = Rect2(48.18606, 33.043488, 32.13545, 14.58773)
+
+[node name="Area2D" type="Area2D" unique_id=932402579]
+script = ExtResource("1_8ryga")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=873153566]
+polygon = PackedVector2Array(-30, 14, 0, 0, 31, 14)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=704315068]
+position = Vector2(16, 7)
+texture = SubResource("AtlasTexture_8ryga")
+flip_v = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=21059631]
+position = Vector2(-15, 7)
+texture = SubResource("AtlasTexture_8ryga")
+flip_h = true
+flip_v = true

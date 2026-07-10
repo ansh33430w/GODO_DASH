@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bbfmbu7s5w53t"]
 
 [ext_resource type="PackedScene" uid="uid://cmkvhxh1pw3wr" path="res://scenes/player.tscn" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://bvkwmdwiuvrls" path="res://spike.tscn" id="2_8uh7m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8uh7m"]
 size = Vector2(4921, 58)
@@ -25,3 +26,6 @@ offset_bottom = 647.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=330269545]
 position = Vector2(2460.5, 618)
 shape = SubResource("RectangleShape2D_8uh7m")
+
+[node name="Area2D" parent="." unique_id=932402579 instance=ExtResource("2_8uh7m")]
+position = Vector2(689, 574)
