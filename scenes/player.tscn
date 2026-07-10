@@ -110,6 +110,11 @@ animations = [{
 "loop": true,
 "name": &"neonorm",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [node name="player" type="CharacterBody2D" unique_id=1136749371]
@@ -118,8 +123,8 @@ script = ExtResource("1_tuyoq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1304368445]
 position = Vector2(42, -9)
 sprite_frames = SubResource("SpriteFrames_qhqgy")
-animation = &"idle"
-frame_progress = 0.36064824
+animation = &"new_animation"
+autoplay = "idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1409394287]
 polygon = PackedVector2Array(34, -1, 34, -17, 50, -17, 50, -1)

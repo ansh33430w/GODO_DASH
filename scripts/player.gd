@@ -30,6 +30,7 @@ var states = state.IDLE
 func _physics_process(delta: float) -> void:
 	Gravity(delta)
 	jump()
+	velocity.x = playerspeed
 	move_and_slide()
 	
 	var next_state = nextstate()
@@ -54,7 +55,9 @@ func Gravity(delta) :
 	if not is_on_floor():
 		velocity.y += gravity*delta
 		velocity.y = min(velocity.y,maxfallspeed)
-		
+	else:
+		cur_jumps = 0
+		velocity.y = 0
 	
 		
 		
@@ -64,10 +67,7 @@ func jump() :
 	if Input.is_action_just_pressed("ui_accept") and cur_jumps < maxjumps :
 		velocity.y = jumpvelocity
 		cur_jumps +=1
-	else:
-		cur_jumps= 0
-		velocity.y =0
-		
+	
 		
 		
 		
@@ -79,7 +79,7 @@ func nextstate() -> state:
 	
 	match [ground,iniar]:
 		[true, _]:
-			return state.RUN  if abs(velocity.x>0.0) else state.IDLE
+			return state.RUN  if abs(velocity.x)>0.0 else state.IDLE
 		[false,true]:
 			return state.D_JUMP if cur_jumps >=2 else state.JUMP
 		[false,false]:
@@ -103,13 +103,13 @@ func statemanager(State:state):
 			anim = "idle"
 			
 		state.RUN:
-			anim = "run"
+			anim = "neonorm"
 			
 		state.JUMP:
-			anim = "run"
+			anim = "jump"
 			
 		state.D_JUMP:
-			anim="D_JUMP"
+			anim="doublejump"
 			
 		state.FALL:
 			anim = "fall"
@@ -126,9 +126,9 @@ func statemanager(State:state):
 
 func rotation_update(delta) :
 	if not is_on_floor() :
-		rotation += deg_to_rad(360.0) * delta *1.5
+		animated_sprite_2d.rotation += deg_to_rad(360.0) * delta *1.5
 	else:
-		rotation =0.0
+		animated_sprite_2d.rotation =0.0
 		
 		
 		
