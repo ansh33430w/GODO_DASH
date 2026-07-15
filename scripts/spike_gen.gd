@@ -9,7 +9,7 @@ extends Node2D
 @export var mingap = 350
 var maxgap = 900
 var minspike = 3
-var maxspike = 7
+var maxspike = 6
 var despawndistance = 1500.0
 var spike_y_level = -15
 

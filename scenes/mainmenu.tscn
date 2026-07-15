@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dpdy8de805elg"]
 
 [ext_resource type="Texture2D" uid="uid://dxcg7hhjwxqwf" path="res://Geometry Rising Asset Pack/UI_BG_LOGO/_gdbg.png" id="1_5mbse"]
+[ext_resource type="Script" uid="uid://bouv3gxgaie30" path="res://scripts/mainmenu.gd" id="1_r3g3c"]
 [ext_resource type="Texture2D" uid="uid://bg2gqpft6cvsv" path="res://Geometry Rising Asset Pack/UI_BG_LOGO/_geometryrising.png" id="2_natt5"]
 
 [node name="MAINMENU" type="Control" unique_id=929767413]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_r3g3c")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1845892605]
 layout_mode = 0
@@ -29,9 +31,11 @@ expand_mode = 1
 
 [node name="Button" type="Button" parent="." unique_id=857301129]
 layout_mode = 0
-offset_left = 360.0
-offset_top = 237.0
-offset_right = 826.0
-offset_bottom = 327.0
+offset_left = 373.0
+offset_top = 280.0
+offset_right = 791.0
+offset_bottom = 331.0
 text = "START"
 text_overrun_behavior = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -4,7 +4,7 @@ extends  CharacterBody2D
 
 
 
-
+var score = 0
 var gravity = 2500.0
 var jumpvelocity = -800.0
 var maxfallspeed = 16000.0
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		statechanger(next_state)
 		
 	rotation_update(delta)
-	
+	score = int(global_position.x / 10)
 	
 	
 	
@@ -65,6 +65,7 @@ func Gravity(delta) :
 
 func jump() :
 	if Input.is_action_just_pressed("ui_accept") and cur_jumps < maxjumps :
+		$AudioStreamPlayer2.play()
 		velocity.y = jumpvelocity
 		cur_jumps +=1
 	
@@ -137,4 +138,8 @@ func rotation_update(delta) :
 		
 		
 func die() :
+	$AudioStreamPlayer.play()
+	if score > Savmanager.highscore:
+		Savmanager.highscore = score
+		Savmanager.save()
 	get_tree().reload_current_scene()

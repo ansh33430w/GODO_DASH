@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="GODO_DASH"
-run/main_scene="uid://bbfmbu7s5w53t"
+run/main_scene="uid://dpdy8de805elg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Savmanager="*uid://qml03uejbmo4"
 
 [editor_plugins]
 
