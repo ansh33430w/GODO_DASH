@@ -1,10 +1,11 @@
 extends Node
 
-
+var score = 0 
 var highscore = 0
 const savepath = 'user://save.cfg'
 
 func _ready() -> void:
+	
 	loaddata()
 
 

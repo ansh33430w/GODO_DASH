@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		
 	rotation_update(delta)
 	score = int(global_position.x / 10)
-	
+	Savmanager.score = score
 	
 	
 	
