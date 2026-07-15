@@ -33,6 +33,7 @@ func _ready() -> void:
 	
 	
 	
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	if player == null:
 		return
