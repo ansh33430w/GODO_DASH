@@ -9,10 +9,10 @@
 [node name="MainScene" type="Node2D" unique_id=8227548]
 
 [node name="player" parent="." unique_id=1136749371 instance=ExtResource("2_pw63i")]
+scale = Vector2(1.48, 1.48)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=511254752]
 offset = Vector2(0, -146.62)
-zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
 [node name="ground_gen" type="Node2D" parent="." unique_id=1787758433]
@@ -24,3 +24,4 @@ ground_scene = ExtResource("3_7ykc4")
 script = ExtResource("4_pu3yx")
 playerpath = NodePath("../player")
 spikescene = ExtResource("5_gubc5")
+spike_width = 60.0

@@ -4,27 +4,31 @@ extends Node2D
 @export var playerpath: NodePath
 @export var spikescene :PackedScene
 
-var mingap = 350
+@export var spike_width = 95.0
+
+@export var mingap = 350
 var maxgap = 900
 var minspike = 3
 var maxspike = 7
 var despawndistance = 1500.0
-var spike_y_level = 0.0
+var spike_y_level = -15
 
 var player : Node2D
 var spawned_spike : Array[Node2D] = []
 var nextspawn = 0.0
 var cur_spike : int = 0
 
+var buffer = 2500.0
 
 func _ready() -> void:
 	player = get_node(playerpath)
 	randomize(
 		
 	)
-	_changespiketarget()
+	
 	nextspawn = player.global_position.x + 600.0
-	for i in range(cur_spike):
+	
+	while nextspawn < player.global_position.x + buffer:
 		_spawn_spike()
 		
 		
@@ -32,8 +36,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player == null or spikescene == null :
 		return
-	while spawned_spike.size() < cur_spike:
+	while nextspawn < player.global_position.x + buffer:
 		_spawn_spike()
+	
 	_despawnspike()
 		
 
@@ -41,20 +46,27 @@ func _process(delta: float) -> void:
 
 
 
-func _changespiketarget():
-	cur_spike = randf_range(minspike,maxspike)
-	
-	
+
 
 
 func _spawn_spike():
 	print("spawnned")
-	var spike :Node2D = spikescene.instantiate()
-	add_child(spike)
-	spike.global_position = Vector2(nextspawn,spike_y_level)
+	var groupsize  = randi_range(minspike,maxspike)
 	
-	spawned_spike.append(spike)
+	
+	for i in range(groupsize) : 
+		var spike :Node2D = spikescene.instantiate()
+		add_child(spike)
+		spike.global_position = Vector2(nextspawn,spike_y_level)
+		spawned_spike.append(spike)
+		nextspawn += spike_width
+		
+		
 	nextspawn += randf_range(mingap,maxgap)
+	
+	
+	
+
 	
 	
 func _despawnspike():
