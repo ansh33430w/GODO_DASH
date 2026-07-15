@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bhjdup31jj560"]
+
+[ext_resource type="PackedScene" uid="uid://bvkwmdwiuvrls" path="res://spike.tscn" id="1_j05j5"]
+
+[node name="spike type1" type="Node" unique_id=591745622]
+
+[node name="Area2D" parent="." unique_id=932402579 instance=ExtResource("1_j05j5")]
+
+[node name="Area2D2" parent="." unique_id=923287543 instance=ExtResource("1_j05j5")]
+position = Vector2(241, 0)
+
+[node name="Area2D3" parent="." unique_id=1264141928 instance=ExtResource("1_j05j5")]
+position = Vector2(180, 0)
+
+[node name="Area2D4" parent="." unique_id=689240510 instance=ExtResource("1_j05j5")]
+position = Vector2(120, 0)
+
+[node name="Area2D5" parent="." unique_id=1786358845 instance=ExtResource("1_j05j5")]
+position = Vector2(60, 0)

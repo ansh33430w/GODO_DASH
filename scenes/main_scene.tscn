@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://duikkutc3qn22"]
+
+[ext_resource type="Script" uid="uid://chpjfeqadc5p2" path="res://scripts/lvlgen.gd" id="1_w2twt"]
+[ext_resource type="PackedScene" uid="uid://cmkvhxh1pw3wr" path="res://scenes/player.tscn" id="2_pw63i"]
+
+[sub_resource type="PackedScene" id="PackedScene_pw63i"]
+
+[sub_resource type="PackedScene" id="PackedScene_7ykc4"]
+
+[sub_resource type="PackedScene" id="PackedScene_pu3yx"]
+
+[node name="MainScene" type="Node2D" unique_id=8227548]
+
+[node name="lvlgen" type="Node2D" parent="." unique_id=539875195]
+script = ExtResource("1_w2twt")
+playerpath = NodePath("../player")
+pattern_scene = Array[PackedScene]([SubResource("PackedScene_pw63i"), SubResource("PackedScene_7ykc4"), SubResource("PackedScene_pu3yx")])
+
+[node name="player" parent="." unique_id=1136749371 instance=ExtResource("2_pw63i")]
