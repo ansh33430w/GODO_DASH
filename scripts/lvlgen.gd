@@ -4,27 +4,27 @@ extends Node2D
 
 
 @export var playerpath :NodePath 
-@export var pattern_scene :Array[PackedScene] = []
+@export var ground_scene :PackedScene
 
-@export var tilewidth = 800.
-var  minbuff = 3
-var maxbuff = 8
-var despawndis = 1500
+@export var tilewidth = 800.0
 
-var player :Node2D
-var spanedtiles = []
-var nextspantile_x = 0.0
-var cur_buff_target = 0
+var tile_ahed = 4
+var despawndistance = 1500.0
+
+
+var player : Node2D
+var spawned_tiles : Array[Node2D] = []
+var next_spawntile = 0.0
 
 
 func _ready() -> void:
 	player = get_node(playerpath)
-	randomize()
 	
-	_new_buff_target()
-	
-	for i in range(cur_buff_target):
+	for i in range(tile_ahed):
 		_spawntiles()
+	
+	
+	
 		
 	
 	
@@ -34,50 +34,43 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta: float) -> void:
-	if player == null or pattern_scene.is_empty():
+	if player == null:
 		return
-	
-	_spawntiles()
-	_new_buff_target()
-	
-	_despan_tiles()
-	
+	while next_spawntile < player.global_position.x + (tile_ahed * tilewidth):
+		_spawntiles()
+		
+	_despawn_tiles()
 	
 	
 	
 	
 	
-func _new_buff_target():
-	cur_buff_target = randi_range(minbuff,minbuff)
-	
-	
+
 	
 func _spawntiles():
-	if pattern_scene.is_empty():
-		push_warning("no pattern")
+	if ground_scene == null :
 		return
-		
-	var selected :PackedScene = pattern_scene[randi() % pattern_scene.size() ]
-	var tile = selected.instantiate()
+	var tile : Node2D = ground_scene.instantiate()
 	add_child(tile)
-	tile.global_position = Vector2(nextspantile_x , 0.0)
-	spanedtiles.append(tile)
-	nextspantile_x += tilewidth
+	tile.global_position = Vector2(next_spawntile,0.0)
+	spawned_tiles.append(tile)
+	next_spawntile += tilewidth
 	
 	
 	
-func _despan_tiles() :
-	var cutof_x :float =player.global_position.x - despawndis
 	
-	for i in range(spanedtiles.size() - 1 , - 1 , -1 ):
-		var tiles :Node2D = spanedtiles[i]
-		if tiles.global_position.x < cutof_x :
-			tiles.queue_free()
-			spanedtiles.remove_at(i)
-		
+func _despawn_tiles():
+	var cutoff = player.global_position.x - despawndistance
 	
 	
+	for i in range(spawned_tiles.size() -1,-1,-1):
+		var tile : Node2D = spawned_tiles[i]
+		if tile.global_position.x < cutoff:
+			tile.queue_free()
+			spawned_tiles.remove_at(i)
 	
+	
+
 
 
 	
