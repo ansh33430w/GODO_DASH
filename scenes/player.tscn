@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://pijq0ry14j1t" path="res://Geometry Rising Asset Pack/CHARACTERS/DR_DASH/亡 G neut norm.png" id="5_smehm"]
 [ext_resource type="AudioStream" uid="uid://dlagdlbyx1cua" path="res://Geometry Rising Asset Pack/CHARACTERS/geometry-dash-death-sound-effect.mp3" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://cn85tb16tgb4y" path="res://Geometry Rising Asset Pack/CHARACTERS/Voicy_Quit Sound Effect.mp3" id="8_smehm"]
+[ext_resource type="PackedScene" uid="uid://bu2rfxksxaxs0" path="res://scenes/camera_2d.tscn" id="9_ur7pv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
 atlas = ExtResource("1_qlg0r")
@@ -112,11 +113,6 @@ animations = [{
 "loop": true,
 "name": &"neonorm",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
 }]
 
 [node name="player" type="CharacterBody2D" unique_id=1136749371 groups=["player"]]
@@ -125,7 +121,7 @@ script = ExtResource("1_tuyoq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1304368445]
 position = Vector2(42, -9)
 sprite_frames = SubResource("SpriteFrames_qhqgy")
-animation = &"new_animation"
+animation = &"neonorm"
 autoplay = "idle"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1409394287]
@@ -136,3 +132,7 @@ stream = ExtResource("7_fjrip")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=764614809]
 stream = ExtResource("8_smehm")
+
+[node name="Camera2D" parent="." unique_id=1808907056 instance=ExtResource("9_ur7pv")]
+offset = Vector2(0, -252.555)
+position_smoothing_enabled = false

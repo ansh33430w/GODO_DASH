@@ -104,7 +104,7 @@ func statemanager(State:state):
 			anim = "idle"
 			
 		state.RUN:
-			anim = "neonorm"
+			anim = "idle"
 			
 		state.JUMP:
 			anim = "jump"
@@ -138,8 +138,12 @@ func rotation_update(delta) :
 		
 		
 func die() :
+	Savmanager.death +=1
 	$AudioStreamPlayer.play()
+	$Camera2D.shake()
 	if score > Savmanager.highscore:
 		Savmanager.highscore = score
 		Savmanager.save()
+	set_physics_process(false)
+	await get_tree().create_timer(.5).timeout
 	get_tree().reload_current_scene()

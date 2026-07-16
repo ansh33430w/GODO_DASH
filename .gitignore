@@ -5,3 +5,5 @@
 assests
 /Geometry Rising Asset Pack
 /addons/godot_super-wakatime
+*.zip
+/exp

@@ -1,5 +1,6 @@
 extends Node
 
+var death = 0
 var score = 0 
 var highscore = 0
 const savepath = 'user://save.cfg'

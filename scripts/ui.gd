@@ -3,7 +3,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	$Label.text = "HIGHSCORE : %d" % Savmanager.highscore
-	
+	$Label3.text = "DEATHS %d" % Savmanager.death
 
 
 	
